@@ -1,13 +1,17 @@
 package com.asteria.rental.ui.views;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.internal.databinding.conversion.DateToStringConverter;
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.emf.databinding.EMFObservables;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.FeaturePath;
@@ -29,7 +33,6 @@ import com.asteria.rental.ui.Messages;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalPackage.Literals;
-import com.opcoach.training.rental.core.RentalCoreActivator;
 
 public class RentalPropertyView
 {
@@ -114,27 +117,28 @@ public class RentalPropertyView
 
 	public void setRental(Rental r)
 	{
-		currentRental = r;
+		if (rentedObjectLabel != null) {
+			currentRental = r;
 
-		if (m_bindingContext != null)
-		{
-			m_bindingContext.dispose();
-			m_bindingContext = null;
+			if (m_bindingContext != null)
+			{
+				m_bindingContext.dispose();
+				m_bindingContext = null;
+			}
+
+			if (r == null)
+			{
+				rentedObjectLabel.setText(" ");
+				customerNameLabel.setText(" ");
+				startDateLabel.setText(" ");
+				endDateLabel.setText(" ");
+			} else
+			{
+
+				m_bindingContext = initDataBindings();
+
+			}
 		}
-
-		if (r == null)
-		{
-			rentedObjectLabel.setText(" ");
-			customerNameLabel.setText(" ");
-			startDateLabel.setText(" ");
-			endDateLabel.setText(" ");
-		} else
-		{
-
-			m_bindingContext = initDataBindings();
-
-		}
-
 	}
 //
 //	@Override
@@ -162,6 +166,11 @@ public class RentalPropertyView
 
 	}
 
+	@Inject @Optional
+	public void receivedSelection(@Named(IServiceConstants.ACTIVE_SELECTION) Rental r ) {
+		setRental(r);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -212,4 +221,5 @@ public class RentalPropertyView
 		//
 		return bindingContext;
 	}
+	
 }

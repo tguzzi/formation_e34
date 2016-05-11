@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.application" bindingContexts="_6wlLecgZEeSyMNYR5xypkQ">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.window.main" label="Eclipse 4 RCP Application" width="500" height="400">
-    <children xsi:type="basic:Part" xmi:id="_Lq4aQBdgEealL688LAiZiQ" elementId="com.asteria.rental.eap.property" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.views.RentalPropertyView" label="Rental property"/>
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.window.main" selectedElement="_VR7psBeEEealL688LAiZiQ" label="Eclipse 4 RCP Application" width="800" height="600">
+    <children xsi:type="basic:PartSashContainer" xmi:id="_VR7psBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.partsashcontainer.0" selectedElement="_raO9kBeEEealL688LAiZiQ" horizontal="true">
+      <children xsi:type="basic:PartStack" xmi:id="_raO9kBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.partstack.agency" containerData="60">
+        <children xsi:type="basic:Part" xmi:id="_Xh7WYBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.agency" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.views.RentalAgencyView" label="Agency"/>
+      </children>
+      <children xsi:type="basic:PartStack" xmi:id="_qPPxIBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.partstack.properties" containerData="40">
+        <children xsi:type="basic:Part" xmi:id="_Lq4aQBdgEealL688LAiZiQ" elementId="com.asteria.rental.eap.property" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.views.RentalPropertyView" label="Rental property"/>
+      </children>
+    </children>
     <mainMenu xmi:id="_6wlLicgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_6wlLisgZEeSyMNYR5xypkQ" elementId="file" label="File">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLi8gZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.handleditem.file.open" label="Open" iconURI="platform:/plugin/com.asteria.rental.eap/icons/sample.png" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
