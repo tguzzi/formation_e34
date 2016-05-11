@@ -49,7 +49,7 @@ public class RentalPropertyView
 	}
 
 	@PostConstruct
-	public void createPartControl(Composite parent)
+	public void createPartControl(Composite parent, RentalAgency agency)
 	{
 		parent.setLayout(new GridLayout(1, false));
 
@@ -103,7 +103,7 @@ public class RentalPropertyView
 		endDateLabel = new Label(dateGroup, SWT.NONE);
 
 		// Fill with sample
-		RentalAgency agency = RentalCoreActivator.getAgency();
+//		RentalAgency agency = RentalCoreActivator.getAgency();
 		setRental(agency.getRentals().get(0));
 		m_bindingContext = initDataBindings();
 
@@ -186,7 +186,6 @@ public class RentalPropertyView
 		}
 
 	}*/
-	
 	
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
