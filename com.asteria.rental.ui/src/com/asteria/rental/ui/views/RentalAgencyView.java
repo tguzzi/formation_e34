@@ -9,6 +9,7 @@ import javax.inject.Named;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -48,7 +49,7 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 	}
 
 	@PostConstruct
-	public void createPartControl(Composite parent, ESelectionService selectionService, IEclipseContext context, @Named(RentalUIConstants.RENTAL_UI_IMAGE_REGISTRY) ImageRegistry imgReg)
+	public void createPartControl(Composite parent, ESelectionService selectionService, IEclipseContext context, @Named(RentalUIConstants.RENTAL_UI_IMAGE_REGISTRY) ImageRegistry imgReg, EMenuService menuService)
 	{
 		parent.setLayout(new GridLayout(1, false));
 
@@ -132,6 +133,8 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 				
 			}
 		});
+		
+		menuService.registerContextMenu(agencyViewer.getControl(), "com.asteria.rental.eap.popupmenu.message");
 
 	}
 //E34: écoute du préférence store
