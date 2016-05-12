@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.application" bindingContexts="_6wlLecgZEeSyMNYR5xypkQ">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.application" bindingContexts="_6wlLecgZEeSyMNYR5xypkQ">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.window.main" selectedElement="_VR7psBeEEealL688LAiZiQ" label="Eclipse 4 RCP Application" width="800" height="600">
     <children xsi:type="basic:PartSashContainer" xmi:id="_VR7psBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.partsashcontainer.0" selectedElement="_raO9kBeEEealL688LAiZiQ" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_raO9kBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.partstack.agency" containerData="60">
         <children xsi:type="basic:Part" xmi:id="_Xh7WYBeEEealL688LAiZiQ" elementId="com.asteria.rental.eap.agency" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.views.RentalAgencyView" label="Agency">
+          <handlers xmi:id="_KnhugBgeEealL688LAiZiQ" elementId="com.asteria.rental.eap.handler.0" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.handlers.CopyCustomer" command="_Dzen0BgeEealL688LAiZiQ"/>
           <menus xmi:id="_XrbxEBgbEealL688LAiZiQ" elementId="com.asteria.rental.eap.menu.0">
             <tags>ViewMenu</tags>
             <children xsi:type="menu:HandledMenuItem" xmi:id="_xNJtQBgaEealL688LAiZiQ" elementId="com.asteria.rental.eap.handledmenuitem.message" label="Message" iconURI="platform:/plugin/com.asteria.rental.eap/icons/sample.png" command="_E9HYIBgYEealL688LAiZiQ">
@@ -13,6 +14,9 @@
           <menus xsi:type="menu:PopupMenu" xmi:id="_eLLbsBgbEealL688LAiZiQ" elementId="com.asteria.rental.eap.popupmenu.message" label="Message">
             <children xsi:type="menu:HandledMenuItem" xmi:id="_ibCuYBgbEealL688LAiZiQ" elementId="com.asteria.rental.eap.handledmenuitem.message" label="Message" iconURI="platform:/plugin/com.asteria.rental.eap/icons/sample.png" command="_E9HYIBgYEealL688LAiZiQ">
               <parameters xmi:id="_uKc70BgbEealL688LAiZiQ" elementId="com.asteria.rental.eap.parameter.1" name="com.asteria.rental.eap.commandparameter.title" value="Message du popup"/>
+            </children>
+            <children xsi:type="menu:HandledMenuItem" xmi:id="_NVBPgBgeEealL688LAiZiQ" elementId="com.asteria.rental.eap.handledmenuitem.copycustomer" label="Copy customer" command="_Dzen0BgeEealL688LAiZiQ">
+              <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_1xgIkBgiEealL688LAiZiQ" coreExpressionId="com.asteria.rental.ui.customerselected"/>
             </children>
           </menus>
         </children>
@@ -35,6 +39,9 @@
           <parameters xmi:id="_cv17kBgaEealL688LAiZiQ" elementId="com.asteria.rental.eap.parameter.title" name="com.asteria.rental.eap.commandparameter.title" value="Message venant du main menu"/>
         </children>
       </children>
+      <children xsi:type="menu:Menu" xmi:id="_V1BgsBgpEealL688LAiZiQ" elementId="window" label="Window">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZHIxsBgpEealL688LAiZiQ" elementId="com.asteria.rental.eap.handledmenuitem.preferences" label="Preferences" command="_KtJNUBgpEealL688LAiZiQ"/>
+      </children>
     </mainMenu>
     <trimBars xmi:id="_6wlLlcgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.trimbar.top">
       <children xsi:type="menu:ToolBar" xmi:id="_6wlLlsgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.toolbar">
@@ -47,7 +54,8 @@
   <handlers xmi:id="_6wlLgcgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.handler.openCommand" contributionURI="bundleclass://com.asteria.rental.eap/com.asteria.rental.eap.handlers.OpenHandler" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
   <handlers xmi:id="_6wlLhMgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.handler.saveCommand" contributionURI="bundleclass://com.asteria.rental.eap/com.asteria.rental.eap.handlers.SaveHandler" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
   <handlers xmi:id="_6wlLh8gZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.handler.aboutCommand" contributionURI="bundleclass://com.asteria.rental.eap/com.asteria.rental.eap.handlers.AboutHandler" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
-  <handlers xmi:id="_KuSaoBgaEealL688LAiZiQ" elementId="com.asteria.rental.eap.handler.message" contributionURI="bundleclass://com.asteria.rental.eap/com.asteria.rental.eap.handlers.Message" command="_E9HYIBgYEealL688LAiZiQ"/>
+  <handlers xmi:id="_KuSaoBgaEealL688LAiZiQ" elementId="com.asteria.rental.eap.handler.message" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.handlers.Message" command="_E9HYIBgYEealL688LAiZiQ"/>
+  <handlers xmi:id="_P9vkQBgpEealL688LAiZiQ" elementId="com.asteria.rental.eap.handler.1" contributionURI="bundleclass://com.opcoach.e4.preferences/com.opcoach.e4.preferences.handlers.E4PreferencesHandler" command="_KtJNUBgpEealL688LAiZiQ"/>
   <bindingTables xmi:id="_6wlLfsgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.bindingtable" bindingContext="_6wlLecgZEeSyMNYR5xypkQ">
     <bindings xmi:id="_6wlLf8gZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.keybinding.m1q" keySequence="M1+Q" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
     <bindings xmi:id="_6wlLgsgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.keybinding.m1o" keySequence="M1+O" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
@@ -70,6 +78,8 @@
   <commands xmi:id="_E9HYIBgYEealL688LAiZiQ" elementId="com.asteria.rental.eap.command.message" commandName="Message" description="Affiche un message">
     <parameters xmi:id="_XsMtcBgYEealL688LAiZiQ" elementId="com.asteria.rental.eap.commandparameter.title" name="Message title"/>
   </commands>
+  <commands xmi:id="_Dzen0BgeEealL688LAiZiQ" elementId="org.eclipse.ui.edit.copy" commandName="Copy"/>
+  <commands xmi:id="_KtJNUBgpEealL688LAiZiQ" elementId="org.eclipse.ui.window.preferences" commandName="Preferences"/>
   <addons xmi:id="_6wlLcsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_6wlLc8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_6wlLdMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -77,5 +87,4 @@
   <addons xmi:id="_6wlLdsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_6wlLd8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
   <addons xmi:id="_6wlLeMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
-  <addons xmi:id="_CQZzIBd8EealL688LAiZiQ" elementId="com.asteria.rental.eap.addon.0" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.RentalAddon"/>
 </application:Application>

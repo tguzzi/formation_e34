@@ -2,6 +2,7 @@ package com.asteria.rental.ui.views;
 
 import java.util.Collection;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -93,7 +94,7 @@ public class RentalProvider extends LabelProvider
 	public String getText(Object element)
 	{
 		String result = null;
-		boolean displayCount = false; //E34: RentalUIActivator.getDefault().getPreferenceStore().getBoolean(PREF_DISPLAY_COUNT);
+		boolean displayCount = RentalUIActivator.getDefault().getPreferenceStore().getBoolean(PREF_DISPLAY_COUNT);
 
 		if (element instanceof RentalAgency)
 		{
@@ -158,20 +159,20 @@ public class RentalProvider extends LabelProvider
 		return (currentPalette != null) ? currentPalette.getForeground(element) : null;
 
 	}
-
+	
 	public void initPalette()
 	{
 		// Get the selected palette in the preference parameters
 		// (called by the preference store listener and the constructor of this
 		// class)
-		String val = null;//E34: RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_PALETTE);
+		String val = null; //E34: (extension)RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_PALETTE);
 		if (val == null)
 		{
 			currentPalette = new Palette("defaultPalette");
 			currentPalette.setName("default");
 			currentPalette.setColorProvider(new NonePalette());
 		} else
-			currentPalette = null; //E34: RentalUIActivator.getDefault().getPaletteManager().get(val);
+			currentPalette = RentalUIActivator.getDefault().getPaletteManager().get(val);
 
 	}
 
@@ -207,19 +208,16 @@ public class RentalProvider extends LabelProvider
 
 		public Image getImage()
 		{
-			// E34: gestion image pour node
-//			ImageRegistry reg = RentalUIActivator.getDefault().getImageRegistry();
-//
-//			if (name == RENTALS_NODE)
-//			{
-//				return reg.get(IMG_RENTAL);
-//			} else if (name == CUSTOMERS_NODE)
-//			{
-//				return reg.get(IMG_CUSTOMER);
-//			} else if (name == OBJECTS_NODE)
-//			{
-//				return reg.get(IMG_RENTAL_OBJECT);
-//			}
+			if (name == RENTALS_NODE)
+			{
+				return imageRegistry.get(IMG_RENTAL);
+			} else if (name == CUSTOMERS_NODE)
+			{
+				return imageRegistry.get(IMG_CUSTOMER);
+			} else if (name == OBJECTS_NODE)
+			{
+				return imageRegistry.get(IMG_RENTAL_OBJECT);
+			}
 			return null;
 		}
 

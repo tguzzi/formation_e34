@@ -50,18 +50,16 @@ public class NonePalette implements IColorProvider, RentalUIConstants
 	private Color getPrefColor(String key)
 	{
 		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
-//E34: gestion des préférences
-//		IPreferenceStore pref = RentalUIActivator.getDefault().getPreferenceStore();
-//		String rgbKey = pref.getString(key);
-//		Color result = colorRegistry.get(rgbKey);
-//		if (result == null)
-//		{
-//			// Get value in pref store
-//			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
-//			result = colorRegistry.get(rgbKey);
-//		}
-//		return result;
-		return null;
+		IPreferenceStore pref = RentalUIActivator.getDefault().getPreferenceStore();
+		String rgbKey = pref.getString(key);
+		Color result = colorRegistry.get(rgbKey);
+		if (result == null)
+		{
+			// Get value in pref store
+			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
+			result = colorRegistry.get(rgbKey);
+		}
+		return result;
 
 	}
 }

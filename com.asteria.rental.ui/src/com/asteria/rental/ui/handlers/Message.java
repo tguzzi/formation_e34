@@ -1,5 +1,5 @@
  
-package com.asteria.rental.eap.handlers;
+package com.asteria.rental.ui.handlers;
 
 import javax.inject.Named;
 

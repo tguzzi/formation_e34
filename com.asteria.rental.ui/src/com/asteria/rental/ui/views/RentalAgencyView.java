@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
@@ -161,12 +163,16 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 //
 //		super.dispose();
 //	}
-//	@Override
-//	public void propertyChange(PropertyChangeEvent event)
-//	{
-//		provider.initPalette();
-//		agencyViewer.refresh();
-//	}
+	@Inject
+	public void propertyChange(@Preference(PREF_CUSTOMER_COLOR) String custColor,
+			@Preference(PREF_RENTAL_COLOR) String renttColor,
+			@Preference(PREF_RENTAL_OBJECT_COLOR) String rentObjtColor)
+	{
+		if (provider != null) {
+			provider.initPalette();
+			agencyViewer.refresh();
+		}
+	}
 
 	@Focus
 	public void setFocus()

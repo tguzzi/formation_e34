@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="com.asteria.rental.ui.customerselected">
+         <instanceof
+               value="com.opcoach.training.rental.Customer">
+         </instanceof>
+      </definition>
+   </extension>
+   <extension
+         point="com.opcoach.e4.preferences.e4PreferencePages">
+      <page
+            name="Default"
+            category="com.asteria.rental.ui.palettepage"
+            class="com.asteria.rental.ui.pref.DefaultPalettePreferences"
+            id="com.asteria.rental.ui.page1">
+      </page>
+      <page
+            name="Palette"
+            category="com.asteria.rental.ui.homepage"
+            class="com.asteria.rental.ui.pref.RentalColorPreferences"
+            id="com.asteria.rental.ui.palettepage">
+      </page>
+      <page
+            name="Rental"
+            class="com.asteria.rental.ui.pref.RentalPrefHomePage"
+            id="com.asteria.rental.ui.homepage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.asteria.rental.ui.pref.RentalPrefInit">
+      </initializer>
+   </extension>
+   <extension
+         id="com.asteria.rental.ui.fragment"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            uri="fragment.e4xmi">
+      </fragment>
+   </extension>
+
+</plugin>
