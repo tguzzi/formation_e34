@@ -39,9 +39,6 @@
           <parameters xmi:id="_cv17kBgaEealL688LAiZiQ" elementId="com.asteria.rental.eap.parameter.title" name="com.asteria.rental.eap.commandparameter.title" value="Message venant du main menu"/>
         </children>
       </children>
-      <children xsi:type="menu:Menu" xmi:id="_V1BgsBgpEealL688LAiZiQ" elementId="window" label="Window">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZHIxsBgpEealL688LAiZiQ" elementId="com.asteria.rental.eap.handledmenuitem.preferences" label="Preferences" command="_KtJNUBgpEealL688LAiZiQ"/>
-      </children>
     </mainMenu>
     <trimBars xmi:id="_6wlLlcgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.trimbar.top">
       <children xsi:type="menu:ToolBar" xmi:id="_6wlLlsgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.toolbar">
@@ -55,7 +52,6 @@
   <handlers xmi:id="_6wlLhMgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.handler.saveCommand" contributionURI="bundleclass://com.asteria.rental.eap/com.asteria.rental.eap.handlers.SaveHandler" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
   <handlers xmi:id="_6wlLh8gZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.handler.aboutCommand" contributionURI="bundleclass://com.asteria.rental.eap/com.asteria.rental.eap.handlers.AboutHandler" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
   <handlers xmi:id="_KuSaoBgaEealL688LAiZiQ" elementId="com.asteria.rental.eap.handler.message" contributionURI="bundleclass://com.asteria.rental.ui/com.asteria.rental.ui.handlers.Message" command="_E9HYIBgYEealL688LAiZiQ"/>
-  <handlers xmi:id="_P9vkQBgpEealL688LAiZiQ" elementId="com.asteria.rental.eap.handler.1" contributionURI="bundleclass://com.opcoach.e4.preferences/com.opcoach.e4.preferences.handlers.E4PreferencesHandler" command="_KtJNUBgpEealL688LAiZiQ"/>
   <bindingTables xmi:id="_6wlLfsgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.bindingtable" bindingContext="_6wlLecgZEeSyMNYR5xypkQ">
     <bindings xmi:id="_6wlLf8gZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.keybinding.m1q" keySequence="M1+Q" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
     <bindings xmi:id="_6wlLgsgZEeSyMNYR5xypkQ" elementId="com.asteria.rental.eap.keybinding.m1o" keySequence="M1+O" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
@@ -71,6 +67,7 @@
       <parameters xmi:id="_lRzDoBgcEealL688LAiZiQ" elementId="com.asteria.rental.eap.parameter.2" name="com.asteria.rental.eap.commandparameter.title" value="Message de la contribution"/>
     </children>
   </menuContributions>
+  <trimContributions xmi:id="_Huv0oBhMEeaTAOHWckFoZw" elementId="com.asteria.rental.eap.trimcontribution.0"/>
   <commands xmi:id="_6wlLfMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
   <commands xmi:id="_6wlLgMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.open" commandName="openCommand"/>
   <commands xmi:id="_6wlLg8gZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
@@ -79,7 +76,6 @@
     <parameters xmi:id="_XsMtcBgYEealL688LAiZiQ" elementId="com.asteria.rental.eap.commandparameter.title" name="Message title"/>
   </commands>
   <commands xmi:id="_Dzen0BgeEealL688LAiZiQ" elementId="org.eclipse.ui.edit.copy" commandName="Copy"/>
-  <commands xmi:id="_KtJNUBgpEealL688LAiZiQ" elementId="org.eclipse.ui.window.preferences" commandName="Preferences"/>
   <addons xmi:id="_6wlLcsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_6wlLc8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_6wlLdMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

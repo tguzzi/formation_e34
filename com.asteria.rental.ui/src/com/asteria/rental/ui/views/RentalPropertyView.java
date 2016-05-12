@@ -172,31 +172,6 @@ public class RentalPropertyView
 		setRental(r);
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.
-	 * IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
-	 */
-	//E34: revoir la gestion de la selection
-	/*
-	public void selectionChanged(IWorkbenchPart part, ISelection selection)
-	{
-		if (selection.isEmpty())
-			return;
-
-		if (selection instanceof IStructuredSelection)
-		{
-			Object sel = ((IStructuredSelection) selection).getFirstElement();
-
-			// La selection courante est elle un Rental ou adaptable en Rental ?
-			Rental r = (Rental) Platform.getAdapterManager().getAdapter(sel, Rental.class);
-			setRental(r);
-
-		}
-
-	}*/
-	
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//

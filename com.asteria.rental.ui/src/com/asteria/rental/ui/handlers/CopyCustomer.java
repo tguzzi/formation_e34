@@ -4,6 +4,7 @@ import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.dnd.Clipboard;
@@ -20,7 +21,9 @@ public class CopyCustomer
 {
 
 	@Execute
-	public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell, @Named(IServiceConstants.ACTIVE_SELECTION) Customer c)
+	public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell,
+			            @Named(IServiceConstants.ACTIVE_SELECTION) Customer c,
+			            IEventBroker broker)
 	{
 
 		MessageDialog.openInformation(shell,
@@ -34,6 +37,8 @@ public class CopyCustomer
 		Object[] data = new Object[] {textData, rtfData};
 		clipboard.setContents(data, transfers);
 		clipboard.dispose();
+		
+		broker.send("customer/copy", c);
 	}
 	
 	@CanExecute

@@ -37,7 +37,7 @@ import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
 
-public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChangeListener
+public class RentalAgencyView implements RentalUIConstants
 {
 	public static final String VIEW_ID = "com.opcoach.rental.ui.rentalagencyview";
 
@@ -113,56 +113,26 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 //		PlatformUI.getWorkbench().getHelpSystem()
 //				.setHelp(agencyViewer.getControl(), "com.opcoach.training.rental.ui.rentalContext");
 
-		// Autorise le popup sur le treeviewer
-// E34: gestion menu contextuel
-//		MenuManager menuManager = new MenuManager();
-//		Menu menu = menuManager.createContextMenu(agencyViewer.getControl());
-//		agencyViewer.getControl().setMenu(menu);
-//		getSite().registerContextMenu(menuManager, agencyViewer);
 
 		// L'arbre est draggable
 		DragSource ds = new DragSource(agencyViewer.getControl(), DND.DROP_COPY);
 		Transfer[] ts = new Transfer[] { TextTransfer.getInstance(), RTFTransfer.getInstance(), URLTransfer.getInstance() };
 		ds.setTransfer(ts);
 		ds.addDragListener(new AgencyTreeDragSourceListener(agencyViewer, (ImageRegistry) context.get(RENTAL_UI_IMAGE_REGISTRY)));
-// E34: selection provider
-//		getSite().setSelectionProvider(agencyViewer);
+
 		
-		agencyViewer.addPostSelectionChangedListener(new ISelectionChangedListener() {
+		agencyViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 				selectionService.setSelection(selection.size() == 1 ? selection.getFirstElement() : selection.toArray());
 				
 			}
 		});
-		
+
+		// Autorise le popup sur le treeviewer
 		menuService.registerContextMenu(agencyViewer.getControl(), "com.asteria.rental.eap.popupmenu.message");
 
 	}
-//E34: écoute du préférence store
-//
-//	@Override
-//	public void init(IViewSite site) throws PartInitException
-//	{
-//		super.init(site);
-//		// On s'enregistre en tant que pref listener sur le preference store...
-//		RentalUIActivator.getDefault().getPreferenceStore().addPropertyChangeListener(this);
-//
-//		// This treeview is now selection listener to be synchronized with the
-//		// dashboard.
-//		getSite().getPage().addSelectionListener(this);
-//
-//	}
-//	@Override
-//	public void dispose()
-//	{
-//		RentalUIActivator.getDefault().getPreferenceStore().removePropertyChangeListener(this);
-//
-//		// This treeview must remove the selection listener
-//		getSite().getPage().removeSelectionListener(this);
-//
-//		super.dispose();
-//	}
 	@Inject
 	public void propertyChange(@Preference(PREF_CUSTOMER_COLOR) String custColor,
 			@Preference(PREF_RENTAL_COLOR) String renttColor,
