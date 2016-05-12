@@ -16,6 +16,7 @@ import org.eclipse.emf.databinding.EMFObservables;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.FeaturePath;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
@@ -30,6 +31,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
 import com.asteria.rental.ui.Messages;
+import com.asteria.rental.ui.RentalUIConstants;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalPackage.Literals;
@@ -52,7 +54,7 @@ public class RentalPropertyView
 	}
 
 	@PostConstruct
-	public void createPartControl(Composite parent, RentalAgency agency)
+	public void createPartControl(Composite parent, RentalAgency agency, @Named(RentalUIConstants.RENTAL_UI_IMAGE_REGISTRY) ImageRegistry imgReg)
 	{
 		parent.setLayout(new GridLayout(1, false));
 
@@ -82,8 +84,7 @@ public class RentalPropertyView
 				@Override
 				public void dragStart(DragSourceEvent event)
 				{
-					//E34: revoir gestion d'images
-					//event.image = RentalUIActivator.getDefault().getImageRegistry().get(RentalUIConstants.IMG_AGENCY);
+					imgReg.get(RentalUIConstants.IMG_AGENCY);
 				}
 
 			});

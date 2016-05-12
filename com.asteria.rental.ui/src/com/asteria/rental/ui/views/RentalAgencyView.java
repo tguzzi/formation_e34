@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Named;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -45,13 +48,12 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 	}
 
 	@PostConstruct
-	public void createPartControl(Composite parent, ESelectionService selectionService)
+	public void createPartControl(Composite parent, ESelectionService selectionService, IEclipseContext context, @Named(RentalUIConstants.RENTAL_UI_IMAGE_REGISTRY) ImageRegistry imgReg)
 	{
 		parent.setLayout(new GridLayout(1, false));
 
 		final Composite comp = new Composite(parent, SWT.NONE);
 		comp.setLayout(new GridLayout(2, false));
-		ImageRegistry imgReg = new ImageRegistry(); //E34:RentalUIActivator.getDefault().getImageRegistry();
 		Button expandAll = new Button(comp, SWT.FLAT);
 		expandAll.setImage(imgReg.get(IMG_EXPAND_ALL));
 		expandAll.setToolTipText("Expand agency tree");
@@ -88,7 +90,9 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 
 		agencyViewer = new TreeViewer(parent);
 		agencyViewer.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,true));
-		provider = new RentalProvider();
+		
+		provider = ContextInjectionFactory.make(RentalProvider.class, context);
+		
 		agencyViewer.setContentProvider(provider);
 		agencyViewer.setLabelProvider(provider);
 
@@ -117,7 +121,7 @@ public class RentalAgencyView implements RentalUIConstants //E34:, IPropertyChan
 		DragSource ds = new DragSource(agencyViewer.getControl(), DND.DROP_COPY);
 		Transfer[] ts = new Transfer[] { TextTransfer.getInstance(), RTFTransfer.getInstance(), URLTransfer.getInstance() };
 		ds.setTransfer(ts);
-		ds.addDragListener(new AgencyTreeDragSourceListener(agencyViewer));
+		ds.addDragListener(new AgencyTreeDragSourceListener(agencyViewer, (ImageRegistry) context.get(RENTAL_UI_IMAGE_REGISTRY)));
 // E34: selection provider
 //		getSite().setSelectionProvider(agencyViewer);
 		

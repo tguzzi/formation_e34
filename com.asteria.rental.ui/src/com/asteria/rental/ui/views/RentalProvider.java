@@ -2,6 +2,9 @@ package com.asteria.rental.ui.views;
 
 import java.util.Collection;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.IColorProvider;
@@ -28,6 +31,9 @@ public class RentalProvider extends LabelProvider
 
 	private static final Object[] EMPTY_RESULT = new Object[0];
 
+	@Inject @Named(RENTAL_UI_IMAGE_REGISTRY)
+	private ImageRegistry imageRegistry;
+	
 	/** The choosen palette among the additional (may be null) */
 	private Palette currentPalette;
 
@@ -123,25 +129,22 @@ public class RentalProvider extends LabelProvider
 		return (currentPalette == null) ? null : currentPalette.getBackground(element);
 
 	}
-//E34: gérer image
-//	@Override
-//	public Image getImage(Object element)
-//	{
-//		Image result = null;
-//	
-//		ImageRegistry reg = RentalUIActivator.getDefault().getImageRegistry();
-//
-//		if (element instanceof RentalAgency)
-//		{
-//			result = reg.get(IMG_AGENCY);
-//		} else if (element instanceof TNode)
-//		{
-//			result = ((TNode) element).getImage();
-//		}
-//
-//		return result;
-//
-//	}
+
+	public Image getImage(Object element)
+	{
+		Image result = null;
+
+		if (element instanceof RentalAgency)
+		{
+			result = imageRegistry.get(IMG_AGENCY);
+		} else if (element instanceof TNode)
+		{
+			result = ((TNode) element).getImage();
+		}
+
+		return result;
+
+	}
 
 	/*
 	 * (non-Javadoc)

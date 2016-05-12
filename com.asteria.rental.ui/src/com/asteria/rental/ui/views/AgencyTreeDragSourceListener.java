@@ -1,5 +1,6 @@
 package com.asteria.rental.ui.views;
 
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -17,11 +18,14 @@ import com.opcoach.training.rental.Customer;
 final public class AgencyTreeDragSourceListener extends DragSourceAdapter
 {
 	private ISelectionProvider selProvider = null;
+	
+	private ImageRegistry imageReg = null;
 
-	public AgencyTreeDragSourceListener(ISelectionProvider selProvider)
+	public AgencyTreeDragSourceListener(ISelectionProvider selProvider, ImageRegistry imageRegistry)
 	{
 		super();
 		this.selProvider = selProvider;
+		this.imageReg = imageRegistry;
 	}
 
 	@Override
@@ -34,10 +38,9 @@ final public class AgencyTreeDragSourceListener extends DragSourceAdapter
 
 		if (ImageTransfer.getInstance().isSupportedType(event.dataType))
 		{
-			//E34: gestion image du drag
-//			if (selectedObject instanceof Customer)
-//				event.data = RentalUIActivator.getDefault().getImageRegistry().get(RentalUIConstants.IMG_CUSTOMER);
-//			else
+			if (selectedObject instanceof Customer)
+				event.data = imageReg.get(RentalUIConstants.IMG_CUSTOMER);
+			else
 				event.data = null;
 		}
 		if (RTFTransfer.getInstance().isSupportedType(event.dataType))
